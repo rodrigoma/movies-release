@@ -61,6 +61,27 @@
             width: 60%;
         }
 
+        /* inner columns */
+        .column2 {
+            float: left;
+            padding: 0px;
+        }
+
+        .left2 {
+            width: 30%;
+            text-align: left;
+        }
+
+        .right2 {
+            width: 30%;
+            text-align: right;
+        }
+
+        .middle2 {
+            width: 40%;
+            text-align: center;
+        }
+
         /* Clear floats after the columns */
         .row:after {
             content: "";
@@ -114,6 +135,42 @@
         </a>
     </div>
 </div>
+<div class="row">
+    <div class="column left"></div>
+    <div class="column middle">
+        <div class="row">
+            <div class="column2 left2">
+                &nbsp;&nbsp;&nbsp;[L] = DIA DO LANÇAMENTO <br>
+                [PV] = DIA DO TERMINO DA PRÉ-VENDA
+            </div>
+            <div class="column2 middle2">
+                <div class="column left2"></div>
+                <div class="column2 middle2">
+                    <a href="https://github.com/rodrigoma">
+                        <img align="left" alt="Rodrigo's Github" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" />
+                    </a>
+                    <a href="https://twitter.com/rodrigoma">
+                        <img align="center" alt="Rodrigo's Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />
+                    </a>
+                    <a href="https://oc.mymovies.dk/rodrigoma">
+                        <img align="right" alt="Rodrigo's MyMovies" width="22px" src="/img/mymovies.png" />
+                    </a>
+                </div>
+                <div class="column right2"></div>
+            </div>
+            <div class="column2 right2">
+                <span style="background-color: #0095d5">BLU-RAY</span> |
+                <span style="background-color: #bfb6a5">DVD</span> |
+                <span style="background-color: #ef9b55">AMBOS</span>
+            </div>
+        </div>
+    </div>
+    <div class="column right"></div>
+</div>
 
 </body>
 </html>
+
+<!--BD("#0095d5"),-->
+<!--DVD("#bfb6a5"),-->
+<!--BOTH("#ef9b55")-->
