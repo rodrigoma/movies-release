@@ -5,34 +5,96 @@
     <link href='/lib/main.css' rel='stylesheet'/>
     <script src='/lib/main.js'></script>
     <script th:inline="javascript">
-        var nameJs = /*[[${events}]]*/;
+        var calendar;
+        var allEvents = /*[[${allEvents}]]*/;
+        var bdEvents = /*[[${bdEvents}]]*/;
+        var dvdEvents = /*[[${dvdEvents}]]*/;
+        var amazonEvents = /*[[${amazonEvents}]]*/;
+        var versatilEvents = /*[[${versatilEvents}]]*/;
+        var opEvents = /*[[${opEvents}]]*/;
+        var toEvents = /*[[${toEvents}]]*/;
+        var famEvents = /*[[${famEvents}]]*/;
+        var clEvents = /*[[${clEvents}]]*/;
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
 
-            var ev = JSON.parse(nameJs);
+            var initEvents = JSON.parse(allEvents);
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
+            calendar = new FullCalendar.Calendar(calendarEl, {
                 initialDate: "[[${initDate}]]", //'2020-06-12',
                 editable: false,
                 selectable: false,
                 businessHours: true,
                 dayMaxEvents: true, // allow "more" link when too many events
                 headerToolbar: {
-                    left: 'prev,next today',
+                    left: 'prev,next today reset',
                     center: 'title',
-                    right: 'dayGridMonth,listMonth,listYear'
+                    right: 'dayGridMonth listMonth,listYear'
                 },
                 buttonText: {
                     listMonth: 'list month',
                     listYear: 'list year'
                 },
-                events: ev
+                customButtons: {
+                    reset: {
+                        text: 'reset filters',
+                        click: function() {
+                            setAllEvents();
+                        }
+                    }
+                },
+                events: initEvents
             });
 
             calendar.render();
         });
+
+        function rerender(eventsArray) {
+            calendar.removeAllEvents();
+            JSON.parse(eventsArray).forEach(addEventInCalendar);
+        }
+
+        function addEventInCalendar(value, index, array) {
+            calendar.addEvent(value);
+        }
+
+        function setAllEvents() {
+            rerender(allEvents);
+        }
+
+        function setBDEvents() {
+            rerender(bdEvents);
+        }
+
+        function setDVDEvents() {
+            rerender(dvdEvents);
+        }
+
+        function setAmazonEvents() {
+            rerender(amazonEvents);
+        }
+
+        function setVersatilEvents() {
+            rerender(versatilEvents);
+        }
+
+        function setOPEvents() {
+            rerender(opEvents);
+        }
+
+        function setTOEvents() {
+            rerender(toEvents);
+        }
+
+        function setFamEvents() {
+            rerender(famEvents);
+        }
+
+        function setCLEvents() {
+            rerender(clEvents);
+        }
     </script>
     <style>
         body {
@@ -108,16 +170,16 @@
 
 <div class="row">
     <div class="column left">
-        <a href="/?store=AMAZON">
+        <a href="javascript:setAmazonEvents()">
             <img class="displayed" src="/img/amazon.jpg" width="150" height="150">
         </a><br>
-        <a href="/?store=VERSATIL">
+        <a href="javascript:setVersatilEvents()">
             <img class="displayed" src="/img/versatil.jpg" width="150" height="150">
         </a><br>
-        <a href="/?store=OBRASPRIMAS">
+        <a href="javascript:setOPEvents()">
             <img class="displayed" src="/img/obrasprimas.jpg" width="150" height="150">
         </a><br><br><br>
-        <a href="/?type=BD">
+        <a href="javascript:setBDEvents()">
             <img class="displayed" src="/img/logobd.png" width="150" height="150">
         </a>
     </div>
@@ -125,16 +187,16 @@
         <div id='calendar'></div>
     </div>
     <div class="column right">
-        <a href="/?store=THEORIGINALS">
+        <a href="javascript:setTOEvents()">
             <img class="displayed" src="/img/theoriginals.jpg" width="150" height="150">
         </a><br>
-        <a href="/?store=FAMDVD">
+        <a href="javascript:setFamEvents()">
             <img class="displayed" src="/img/famdvd.jpg" width="150" height="150">
         </a><br>
-        <a href="/?store=CLASSICLINE">
+        <a href="javascript:setCLEvents()">
             <img class="displayed" src="/img/classicline.jpg" width="150" height="150">
         </a><br><br><br>
-        <a href="/?type=DVD">
+        <a href="javascript:setDVDEvents()">
             <img class="displayed" src="/img/logodvd.png" width="150" height="150">
         </a>
     </div>
