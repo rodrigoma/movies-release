@@ -42,6 +42,8 @@ public class MovieReleaseService {
 
             events.add(release(
                     movieRelease.getMovies().getTitle(),
+                    movieRelease.getMovies().getValue(),
+                    movieRelease.getMovies().getUrl(),
                     movieRelease.getMovies().getDate(),
                     colorType));
 
@@ -49,6 +51,8 @@ public class MovieReleaseService {
                 movieRelease.getPreorders().forEach(preOrder -> {
                     events.add(preorder(
                             movieRelease.getMovies().getTitle(),
+                            preOrder.getValue(),
+                            movieRelease.getMovies().getUrl(),
                             preOrder.getDate(),
                             colorType));
                 });

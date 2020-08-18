@@ -2,7 +2,7 @@ package com.rodrigoma.moviesrelease.domain;
 
 public class PreOrder {
     private String date;
-    private int value;
+    private String value;
 
     public String getDate() {
         return date;
@@ -12,11 +12,11 @@ public class PreOrder {
         this.date = date;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }

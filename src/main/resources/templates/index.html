@@ -28,6 +28,14 @@
                 selectable: false,
                 businessHours: true,
                 dayMaxEvents: true, // allow "more" link when too many events
+                eventClick: function(info) {
+                    var eventObj = info.event;
+
+                    if (eventObj.url) {
+                        window.open(eventObj.url);
+                        info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+                    }
+                },
                 headerToolbar: {
                     left: 'prev,next today reset',
                     center: 'title',
