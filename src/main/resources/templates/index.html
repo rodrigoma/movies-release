@@ -5,6 +5,7 @@
     <meta charset='utf-8'/>
     <link href='/lib/main.css' rel='stylesheet'/>
     <script src='/lib/main.js'></script>
+    <script src='/lib/locales/pt-br.js'></script>
     <script th:inline="javascript">
         var calendar;
         var allEvents = /*[[${allEvents}]]*/;
@@ -28,6 +29,7 @@
                 editable: false,
                 selectable: false,
                 businessHours: true,
+                locale: 'pt-br',
                 dayMaxEvents: true, // allow "more" link when too many events
                 eventClick: function(info) {
                     var eventObj = info.event;
@@ -43,12 +45,12 @@
                     right: 'dayGridMonth listMonth,listYear'
                 },
                 buttonText: {
-                    listMonth: 'list month',
-                    listYear: 'list year'
+                    listMonth: 'Lista Mês',
+                    listYear: 'Lista Ano'
                 },
                 customButtons: {
                     reset: {
-                        text: 'reset filters',
+                        text: 'Limpar Filtros',
                         click: function() {
                             setAllEvents();
                         }
