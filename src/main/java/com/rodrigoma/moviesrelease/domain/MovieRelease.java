@@ -6,19 +6,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "releases")
+@Document(collection = "releases-new")
 public class MovieRelease {
 
     @Id
     private ObjectId id;
 
-    private Movies movies;
+    private String title;
 
-    private List<PreOrder> preorders;
+    private Bluray bd;
+
+    private Dvd dvd;
+
+    private boolean visible;
 
     private List<String> stores;
-
-    private List<String> types;
 
     public ObjectId getId() {
         return id;
@@ -28,20 +30,44 @@ public class MovieRelease {
         this.id = id;
     }
 
-    public Movies getMovies() {
-        return movies;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMovies(Movies movies) {
-        this.movies = movies;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public List<PreOrder> getPreorders() {
-        return preorders;
+    public Bluray getBd() {
+        return bd;
     }
 
-    public void setPreorders(List<PreOrder> preorders) {
-        this.preorders = preorders;
+    public void setBd(Bluray bd) {
+        this.bd = bd;
+    }
+
+    public boolean hasBd() {
+        return this.bd != null;
+    }
+
+    public Dvd getDvd() {
+        return dvd;
+    }
+
+    public void setDvd(Dvd dvd) {
+        this.dvd = dvd;
+    }
+
+    public boolean hasDvd() {
+        return this.dvd != null;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public List<String> getStores() {
@@ -50,13 +76,5 @@ public class MovieRelease {
 
     public void setStores(List<String> stores) {
         this.stores = stores;
-    }
-
-    public List<String> getTypes() {
-        return types;
-    }
-
-    public void setTypes(List<String> types) {
-        this.types = types;
     }
 }

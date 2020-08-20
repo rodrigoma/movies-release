@@ -7,10 +7,15 @@ import java.util.List;
 
 public interface MovieReleaseRepository extends MongoRepository<MovieRelease, Long> {
 
-    @Query("{ stores: '?0' }")
-    List<MovieRelease> findByStore(String store);
+    @Query("{ visible: ?0 }")
+    List<MovieRelease> findVisible(boolean visible);
 
-    @Query("{ types: '?0' }")
-    List<MovieRelease> findByType(String type);
+    @Query("{ visible: ?0, stores: '?1' }")
+    List<MovieRelease> findVisibleByStore(boolean visible, String store);
 
+    @Query("{ visible: ?0, bd : { $exists : true } }")
+    List<MovieRelease> findBDVisible(boolean visible);
+
+    @Query("{ visible: ?0, dvd : { $exists : true } }")
+    List<MovieRelease> findDVDVisible(boolean visible);
 }
