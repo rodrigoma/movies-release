@@ -1,5 +1,7 @@
 package com.rodrigoma.moviesrelease.controllers;
 
+import com.rodrigoma.moviesrelease.domain.Bluray;
+import com.rodrigoma.moviesrelease.domain.Dvd;
 import com.rodrigoma.moviesrelease.services.MovieReleaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +12,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import static com.rodrigoma.moviesrelease.domain.Stores.*;
-import static com.rodrigoma.moviesrelease.domain.Types.BD;
-import static com.rodrigoma.moviesrelease.domain.Types.DVD;
 import static java.time.LocalDate.now;
 import static java.time.ZoneId.systemDefault;
 import static java.util.Date.from;
@@ -26,10 +26,13 @@ public class HtmlController {
     public String calendar(Model model) {
         model.addAttribute("initDate", formateDate(now()));
 
+        model.addAttribute("bdColor", new Bluray().getColor());
+        model.addAttribute("dvdColor", new Dvd().getColor());
+
         model.addAttribute("allEvents", movieReleaseService.getAllMovies());
 
-        model.addAttribute("bdEvents", movieReleaseService.getByType(BD.toString()));
-        model.addAttribute("dvdEvents", movieReleaseService.getByType(DVD.toString()));
+        model.addAttribute("bdEvents", movieReleaseService.getAllBlurays());
+        model.addAttribute("dvdEvents", movieReleaseService.getAllDvds());
 
         model.addAttribute("amazonEvents", movieReleaseService.getByStore(AMAZON.toString()));
         model.addAttribute("versatilEvents", movieReleaseService.getByStore(VERSATIL.toString()));

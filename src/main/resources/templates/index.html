@@ -25,7 +25,7 @@
             var initEvents = JSON.parse(allEvents);
 
             calendar = new FullCalendar.Calendar(calendarEl, {
-                initialDate: "[[${initDate}]]", //'2020-06-12',
+                initialDate: "[[${initDate}]]",
                 editable: false,
                 selectable: false,
                 businessHours: true,
@@ -166,6 +166,14 @@
             clear: both;
         }
 
+        .bd {
+            background-color: [[${bdColor}]];
+        }
+
+        .dvd {
+            background-color: [[${dvdColor}]];
+        }
+
         img {
             border-radius: 50%;
         }
@@ -236,9 +244,8 @@
                 <div class="column right2"></div>
             </div>
             <div class="column2 right2">
-                <span style="background-color: #0095d5">&nbsp;BLU-RAY&nbsp;</span> |
-                <span style="background-color: #bfb6a5">&nbsp;DVD&nbsp;</span> |
-                <span style="background-color: #ef9b55">&nbsp;AMBOS&nbsp;</span>
+                <span class="bd">&nbsp;BLU-RAY&nbsp;</span> |
+                <span class="dvd">&nbsp;DVD&nbsp;</span>
             </div>
         </div>
     </div>
@@ -247,7 +254,3 @@
 
 </body>
 </html>
-
-<!--BD("#0095d5"),-->
-<!--DVD("#bfb6a5"),-->
-<!--BOTH("#ef9b55")-->
