@@ -40,10 +40,12 @@ public class HtmlController {
         model.addAttribute("amazonEvents", movieReleaseService.getByStore(AMAZON.toString()));
         model.addAttribute("versatilEvents", movieReleaseService.getByStore(VERSATIL.toString()));
         model.addAttribute("opEvents", movieReleaseService.getByStore(OBRASPRIMAS.toString()));
+        model.addAttribute("vpEvents", movieReleaseService.getByStore(VIDEOPEROLA.toString()));
 
         model.addAttribute("toEvents", movieReleaseService.getByStore(THEORIGINALS.toString()));
         model.addAttribute("famEvents", movieReleaseService.getByStore(FAMDVD.toString()));
         model.addAttribute("clEvents", movieReleaseService.getByStore(CLASSICLINE.toString()));
+        model.addAttribute("imEvents", movieReleaseService.getByStore(IMOVISION.toString()));
 
         return "index";
     }
