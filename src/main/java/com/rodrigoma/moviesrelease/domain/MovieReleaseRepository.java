@@ -18,4 +18,10 @@ public interface MovieReleaseRepository extends MongoRepository<MovieRelease, Lo
 
     @Query("{ visible: ?0, dvd : { $exists : true } }")
     List<MovieRelease> findDVDVisible(boolean visible);
+
+    @Query(value = "{ bd : { $exists : true } }", count = true)
+    Long countBD();
+
+    @Query(value = "{ dvd : { $exists : true } }", count = true)
+    Long countDVD();
 }

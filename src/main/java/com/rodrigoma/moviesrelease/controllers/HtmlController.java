@@ -34,6 +34,9 @@ public class HtmlController {
         model.addAttribute("bdEvents", movieReleaseService.getAllBlurays());
         model.addAttribute("dvdEvents", movieReleaseService.getAllDvds());
 
+        model.addAttribute("bdCount", movieReleaseService.countBlurays());
+        model.addAttribute("dvdCount", movieReleaseService.countDvds());
+
         model.addAttribute("amazonEvents", movieReleaseService.getByStore(AMAZON.toString()));
         model.addAttribute("versatilEvents", movieReleaseService.getByStore(VERSATIL.toString()));
         model.addAttribute("opEvents", movieReleaseService.getByStore(OBRASPRIMAS.toString()));

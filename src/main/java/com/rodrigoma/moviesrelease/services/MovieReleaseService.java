@@ -38,6 +38,14 @@ public class MovieReleaseService {
         return createEventArray(movieReleases, ALL);
     }
 
+    public Long countBlurays() {
+        return movieReleaseRepository.countBD();
+    }
+
+    public Long countDvds() {
+        return movieReleaseRepository.countDVD();
+    }
+
     private String createEventArray(List<MovieRelease> listMovies, Types midiaType) {
         Gson gson = new Gson();
 

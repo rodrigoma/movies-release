@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "releases-new")
+@Document(collection = "releases")
 public class MovieRelease {
 
     @Id
