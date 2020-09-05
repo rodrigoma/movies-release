@@ -5,6 +5,8 @@ import com.rodrigoma.moviesrelease.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,14 +76,24 @@ public class MovieReleaseService {
                 midiaType.getDate(),
                 midiaType.getColor()));
 
-        if (midiaType.getPreorders() !=null) {
-            midiaType.getPreorders().forEach(
-                    preOrder -> events.add(preorder(
-                            title,
-                            preOrder.getValue(),
-                            midiaType.getUrl(),
-                            preOrder.getDate(),
-                            midiaType.getColor())));
+        if (midiaType.getPreorders() != null) {
+            midiaType.getPreorders().stream()
+                    .filter(preOrder -> todayAndBeyond(preOrder.getDate()))
+                    .forEach(
+                            preOrder -> events.add(preorder(
+                                    title,
+                                    preOrder.getValue(),
+                                    midiaType.getUrl(),
+                                    preOrder.getDate(),
+                                    midiaType.getColor())));
         }
+    }
+
+    private boolean todayAndBeyond(String preorderDate) {
+        LocalDate preorder = LocalDate.parse(preorderDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate now = LocalDate.now();
+
+
+        return preorder.isEqual(now) || preorder.isAfter(now);
     }
 }
